@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lira-legal-ir"
+version = "0.1.0"
+description = "LLM-assisted legal information retrieval research pipeline"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+dependencies = [
+    "FlagEmbedding",
+    "faiss-cpu",
+    "lightgbm",
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "torch",
+    "tqdm",
+    "transformers",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
+training = ["datasets", "psutil", "sentence-transformers"]
+
+[tool.setuptools]
+py-modules = ["lira_retrieval", "lira_pipeline"]
+packages = ["lira"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+
